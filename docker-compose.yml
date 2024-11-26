@@ -1,0 +1,23 @@
+services:
+  mongo:
+    image: arm64v8/mongo:latest
+    container_name: mongo_chat
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+  rocketchat:
+    image: rocketchat/rocket.chat:latest
+    platform: linux/amd64
+    container_name: rocketchat
+    environment:
+      - MONGO_URL=mongodb://mongo_chat:27017/rocketchat
+      - MONGO_OPLOG_URL=mongodb://mongo_chat:27017/local
+      - ROOT_URL=http://localhost:3000
+      - EMAIL_VERIFICATION=false
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+volumes:
+  mongo_data:
