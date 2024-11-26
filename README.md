@@ -19,7 +19,7 @@ To run this project, make sure you have the following installed:
 Clone this repository to your machine:
 
 ```bash
-git clone https://github.com/your-username/chat_bdd.git
+git clone https://github.com/SilenceStark/AQA_test_chat.git
 cd chat_bdd
 ```
 
